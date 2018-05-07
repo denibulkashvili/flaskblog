@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="hp-content">
+
+    <section class="hp-info">
+      <h2>About Digital Bungalow</h2>
+      <p>This is a homepage info section. A short about text. </p>
+    </section> <!-- hp-info -->
+
+    <section class="hp-recent">
+      <h2>Recent Posts</h2>
+      {% for post in posts %}
+        <div class="hp-recent-post">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content }}</p>
+          <p> - by {{ post.author }} on {{ post.date_posted }}</p>
+        </div>
+      {% endfor %}
+      
+    </section> <!-- hp-recent -->
+
+  </article> <!-- /hp-content -->
+{% endblock content %}

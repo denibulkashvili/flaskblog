@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-device.width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% if title %}
+        <title>Digital Bungalow - {{ title }} </title>
+    {% else %}
+        <title>Digital Bungalow - A Blog for Learning Python </title>
+    {% endif %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+    <header>
+      <div class="logo">
+        <a href="#">
+          <img src="{{ url_for('static', filename='images/logo.png') }}"
+               alt="digital-bungalow-logo">
+        </a>
+      </div>
+      <div class="title">
+        <h1>
+          <a href="#">
+            Digital Bungalow - Blog About Python
+          </a>
+        </h1>
+      </div>
+    </header> <!-- /header -->
+
+    <aside>
+      <nav>
+        <ul>
+          <li>
+            1 &nbsp;&nbsp;navigation {
+          </li>
+          <li>
+            <a href="#">
+              <span>2</span>  &nbsp;&nbsp;&nbsp;&nbsp; home
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>3</span>  &nbsp;&nbsp;&nbsp;&nbsp; topics
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>4</span>  &nbsp;&nbsp;&nbsp;&nbsp; about
+            </a>
+          </li>
+          <li>
+            5 &nbsp;&nbsp;}
+          </li>
+        </ul>
+      </nav> <!-- /nav -->
+
+      <div class="sidebar">
+        <h2>&lt; Quote of the Day &gt;</h2>
+        <p class="quote">"Most good programmers do programming not because they
+          expect to get paid or get adulation by the public, but because it is fun to program." </p>
+        <p class= "quote-meta">- Linus Torvalds</p>
+      </div> <!-- sidebar -->
+
+    </aside> <!-- /aside -->
+
+    <!-- Content Block -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor%}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock content %}
+
+    <footer>
+      <p>Digital Bungalow Blog &copy; 2018.
+        Created with <a href="http://flask.pocoo.org/">Flask</a> and coffee.</p>
+    </footer>
+
+  </div> <!--/wrapper -->
+  </body>
+
+</html>
