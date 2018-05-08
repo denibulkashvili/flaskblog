@@ -5,7 +5,6 @@ from flaskblog import db
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topicname = db.Column(db.String(60), nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     posts = db.relationship('Post', backref='category', lazy=True)
 
     def __repr__(self):
