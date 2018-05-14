@@ -8,7 +8,8 @@ class Topic(db.Model):
     posts = db.relationship('Post', backref='category', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.topicname}')"
+        return f"Topic('{self.topicname}')"
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,8 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from flaskblog import app
 from flaskblog.models import Topic, Post
-# from forms import RegistrationForm, LoginForm
-
 
 posts = [
     {
@@ -28,3 +26,11 @@ def home():
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+@app.route("/topics")
+def topics():
+    return render_template('topics.html', topics=Topic.query.all(), title='Topics')
+
+# @app.route("/topic/<topic>")
+# def topics():
+#     return render_template('topic.html', topic=topic, title='<topic>')

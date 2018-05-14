@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <article>
+      <section>
+        <tr>
+          {% for topic in topics %}
+            <td> {{ topic.topicname }}</td>
+          {% endfor %}
+        </tr>
+      </section>
+    </article>
+
+{% endblock content %}
