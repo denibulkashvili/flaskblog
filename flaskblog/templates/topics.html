@@ -3,11 +3,16 @@
 
     <article>
       <section>
-        <tr>
-          {% for topic in topics %}
-            <td> {{ topic.topicname }}</td>
-          {% endfor %}
-        </tr>
+        {% for topic in topics %}
+          <tr>
+            <td> <h3>{{ topic.topicname }}</h3> </td>
+            {% for post in topic.posts %}
+              <td> <p>{{ post.title }}</p> </td>
+              <td> <p>{{ post.date_posted }}</p> </td>
+              <td> <p>{{ post.content }}</p> </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
       </section>
     </article>
 

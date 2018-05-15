@@ -31,6 +31,6 @@ def about():
 def topics():
     return render_template('topics.html', topics=Topic.query.all(), title='Topics')
 
-# @app.route("/topic/<topic>")
+# @app.route("/<topic>")
 # def topics():
-#     return render_template('topic.html', topic=topic, title='<topic>')
+#     return render_template('<topic>.html', topic=topic, title='<topic>')

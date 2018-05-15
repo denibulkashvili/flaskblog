@@ -5,7 +5,7 @@ from flaskblog import db
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topicname = db.Column(db.String(60), nullable=False)
-    posts = db.relationship('Post', backref='category', lazy=True)
+    posts = db.relationship('Post', backref='topic', lazy=True)
 
     def __repr__(self):
         return f"Topic('{self.topicname}')"
