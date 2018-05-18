@@ -31,6 +31,19 @@ def about():
 def topics():
     return render_template('topics.html', topics=Topic.query.all(), title='Topics')
 
-# @app.route("/<topic>")
-# def topics():
-#     return render_template('<topic>.html', topic=topic, title='<topic>')
+@app.route("/topic/<topic_name>")
+def topic(topic_name):
+    topic = Topic.query.filter_by(topicname=topic_name).first()
+    return render_template('topic.html', topic=topic)
+
+# @app.route("/post")
+
+
+
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html', title='404'), 404
+#
+# @app.errorhandler(500)
+# def internal_server_error(e):
+#     return render_template('500.html', title='500'), 500
