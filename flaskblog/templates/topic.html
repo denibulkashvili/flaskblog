@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 
-    <article>
-      <section>
-        {{ topic.topicname }}
+    <article class="topics">
+      <section class="post-list">
+        <h2>{{ topic.topicname }}</h2>
 
         {% for post in topic.posts %}
           <td> <p>

@@ -1,10 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
 
-    <article>
-      <section>
-        <p>This is an about page, yo!</p>
+    <article class="about">
+      <section class="about-info">
+        <h2>About Author</h2>
+        <p>Hey there. My name is Denis and I am a Python enthusiast with interests
+        in web development and machine learning. </p>
+
+        <h3>Why should you be interested in this blog?</h3>
+        <p>This blog could be useful to beginners as myself.
+          On a journey to becoming a skilled Pythonista,
+        beginners face and overcome many challenges. Here, I blog
+        about those of my own and how I deal with them.  </p>
       </section>
-    </article>
+
+      <section class="about-contact">
+        <h2>Contact Me</h2>
+        <p> <a href="https://github.com/denibulkashvili">
+          <i class="fab fa-github-square"></i>Github: denibulkashvili
+        </a></p>
+        <p> <a href="mailto: denibulkashvili@gmail.com">
+          <i class="fas fa-envelope"></i>Email: denibulkashvili@gmail.com
+        </a></p>
+
+      </section>
+
+    </article> <!-- /about -->
 
 {% endblock content %}

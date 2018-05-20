@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 
-    <article>
-      <section>
-
+    <article class="topics">
+      <section class="topic-list">
+          <h2>Topics</h2>
           <tr>
             {% for topic in topics %}
             <td>
@@ -13,7 +13,6 @@
             </td>
             {% endfor %}
           </tr>
-
       </section>
     </article>
 

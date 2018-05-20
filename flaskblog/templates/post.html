@@ -1,16 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
 
-    <article>
-      <section>
-        {{ topic.topicname }}
-
+    <article class="post">
+      <section class="post-content">
         {% for post in topic.posts %}
-          <td> <p>{{ post.title }}</p> </td>
-          <td> <p>{{ post.date_posted }}</p> </td>
-          <td> <p>{{ post.content }}</p> </td>
+          <h2>{{ post.title }}</h2>
+          <div class="post-meta">
+            On {{ post.date_posted.strftime('%Y, %b %d') }}
+            in <a href="{{ url_for('topic', topic_name=topic.topicname)}}">
+                {{ topic.topicname }}
+              </a>
+          </div>
+          <div class="post-text">
+            {{ post.content }}
+          </div>
         {% endfor %}
       </section>
+
     </article>
 
 {% endblock content %}
