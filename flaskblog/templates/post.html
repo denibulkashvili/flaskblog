@@ -6,9 +6,9 @@
         {{ topic.topicname }}
 
         {% for post in topic.posts %}
-          <td> <p>
-            <a href="{{ url_for('post', post_title=post.title)}}">{{ post.title }}</a>
-          </p> </td>
+          <td> <p>{{ post.title }}</p> </td>
+          <td> <p>{{ post.date_posted }}</p> </td>
+          <td> <p>{{ post.content }}</p> </td>
         {% endfor %}
       </section>
     </article>

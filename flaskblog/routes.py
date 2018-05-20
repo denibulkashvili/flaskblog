@@ -36,7 +36,11 @@ def topic(topic_name):
     topic = Topic.query.filter_by(topicname=topic_name).first()
     return render_template('topic.html', topic=topic)
 
-# @app.route("/post")
+@app.route("/post/<post_title>")
+def post(post_title):
+    post = Post.query.filter_by(title=post_title).first()
+    topic = Topic.query.filter_by(id=post.topic_id).first()
+    return render_template('post.html', topic=topic, post=post)
 
 
 
