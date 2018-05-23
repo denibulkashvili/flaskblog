@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect
 from flaskblog import app
 from flaskblog.models import Topic, Post
+from flaskblog.forms import RegistrationForm, LoginForm
 
 
 # Routes
@@ -28,12 +29,21 @@ def post(post_title):
     topic = Topic.query.filter_by(id=post.topic_id).first()
     return render_template('post.html', topic=topic, post=post)
 
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
 
-
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     return render_template('404.html', title='404'), 404
-#
-# @app.errorhandler(500)
-# def internal_server_error(e):
-#     return render_template('500.html', title='500'), 500
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Login unsuccessful. Please check username and password', 'danger')
+    return render_template('login.html', title='Log In', form=form)

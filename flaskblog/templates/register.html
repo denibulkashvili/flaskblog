@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <article class="form">
+      <h2>Register</h2>
+      <form class="register" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{  form.username.label }}
+          {% if form.username.errors %}
+            {{ form.username }}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{  form.username }}
+          {% endif %}
+        </div> <!-- /username -->
+        <div class="form-group">
+          {{  form.email.label }}
+          {% if form.email.errors %}
+            {{ form.email }}
+            <div class="invalid-feedback">
+              {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{  form.email }}
+          {% endif %}
+        </div> <!-- /email -->
+        <div class="form-group">
+          {{  form.password.label }}
+          {% if form.password.errors %}
+            {{ form.password }}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{  form.password }}
+          {% endif %}
+        </div> <!-- /password -->
+        <div class="form-group">
+          {{  form.confirm_password.label }}
+          {% if form.confirm_password.errors %}
+            {{ form.confirm_password }}
+            <div class="invalid-feedback">
+              {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{  form.confirm_password }}
+          {% endif %}
+        </div> <!-- /confirm_password -->
+        <div class="form-group btn">
+          {{  form.submit }}
+        </div>
+      </form>
+      <div class="form-extra">
+        Already have an account? <a href="{{ url_for('login') }}">Sign In</a>
+      </div>
+    </article>
+
+{% endblock content %}

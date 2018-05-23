@@ -59,6 +59,13 @@
         </ul>
       </nav> <!-- /nav -->
 
+      <div class="log-reg">
+        <ul>
+          <li><a href="{{ url_for('register')}}">Register</a></li>
+          <li><a href="{{ url_for('login')}}">Log In</a></li>
+        </ul>
+      </div>
+
       <div class="sidebar">
         <h2>&lt; Quote of the Day &gt;</h2>
         <p class="quote">"Most good programmers do programming not because they
@@ -68,7 +75,15 @@
 
     </aside> <!-- /aside -->
 
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     {% block content %}{% endblock content %}
 
     <footer>
