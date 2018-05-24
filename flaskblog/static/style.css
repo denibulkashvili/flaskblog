@@ -122,6 +122,20 @@ nav a span {
 nav a:hover {
   background: var(--hover);
 }
+/* Log-Reg */
+.log-reg {
+  background: var(--primary);
+  padding: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.log-reg ul {
+  list-style: none;
+}
+.log-reg ul a {
+  text-decoration: none;
+  color: var(--blue);
+}
 
 /* Sidebar */
 .sidebar {
@@ -167,7 +181,10 @@ article h3 {
   margin: 10px 0;
 }
 
-
+/* Login & Register Pages */
+form {
+  
+}
 
 /* Flash Messages */
 .alert {
