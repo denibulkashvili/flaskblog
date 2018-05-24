@@ -61,8 +61,14 @@
 
       <div class="log-reg">
         <ul>
-          <li><a href="{{ url_for('register')}}">Register</a></li>
-          <li><a href="{{ url_for('login')}}">Log In</a></li>
+          {% if current_user.is_authenticated %}
+            <li>Logged in as {{ current_user.username }}</li>
+            <li><a href="{{ url_for('account')}}">My Account</a></li>
+            <li><a href="{{ url_for('logout')}}">Log Out</a></li>
+          {% else %}
+            <li><a href="{{ url_for('register')}}">Register</a></li>
+            <li><a href="{{ url_for('login')}}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
 
