@@ -13,7 +13,7 @@
 
       <section class="account-form">
         <h3>Update Account</h3>
-        <form class="update-account" action="" method="POST">
+        <form class="update-account" action="" method="POST" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
           <div class="form-group">
             {{  form.username.label }}
@@ -46,7 +46,7 @@
             {{  form.picture }}
             {% if form.picture.errors %}
               {% for error in form.picture.errors %}
-                <span>{{ error }}</span>
+                <span>{{ error }}</span></br>
               {% endfor %}
             {% endif %}
           </div> <!-- /picture -->
