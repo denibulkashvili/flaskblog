@@ -4,7 +4,7 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt
 from flaskblog.models import Topic, Post, User
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -27,7 +27,15 @@ def topic(topic_name):
     topic = Topic.query.filter_by(topicname=topic_name).first()
     return render_template('topic.html', topic=topic)
 
-
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    """Create new post"""
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post', form=form)
 
 @app.route("/post/<post_title>")
 def post(post_title):
