@@ -8,9 +8,17 @@
         programming language and all things related to it. </p>
     </section> <!-- hp-info -->
 
-    <section class="hp-recent">
-      <h2>Recent Posts</h2>
 
+    <h2>Recent Posts</h2>
+    <section class="hp-recent">
+      {% for post in posts %}
+        <h3><a href="{{ url_for('post', post_title=post.title) }}">{{ post.title }}</a></h3>
+
+        <div class="post-text">
+          {{ post.content[:100] }}
+
+        </div>
+      {% endfor %}
 
     </section> <!-- hp-recent -->
 
