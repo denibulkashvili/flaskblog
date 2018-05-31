@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from flaskblog.models import User
+from flaskblog.models import User, Topic
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(),
@@ -58,4 +58,6 @@ class PostForm(FlaskForm):
     """Form for creating new posts in create_post.html"""
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
+    topic = SelectField('Topic',
+                        choices=[(t.id, t.topicname) for t in Topic.query.all()], coerce=int)
     submit = SubmitField('Create a Post')

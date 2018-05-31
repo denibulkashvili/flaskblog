@@ -3,18 +3,21 @@
 
     <article class="post">
       <section class="post-content">
-        {% for post in topic.posts %}
+
           <h2>{{ post.title }}</h2>
+
           <div class="post-meta">
-            On {{ post.date_posted.strftime('%Y, %b %d') }}
-            in <a href="{{ url_for('topic', topic_name=topic.topicname)}}">
-                {{ topic.topicname }}
-              </a>
+            <p> Posted by <b>{{ post.author.username }}</b>
+              on {{ post.date_posted.strftime('%Y, %b %d') }}
+              in <a href="{{ url_for('topic', topic_name=topic.topicname)}}">
+                  {{ topic.topicname }}
+                </a>
+            </p>
           </div>
           <div class="post-text">
             {{ post.content }}
           </div>
-        {% endfor %}
+        
       </section>
 
     </article>

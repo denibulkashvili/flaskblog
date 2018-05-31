@@ -33,6 +33,19 @@
               {{  form.content }}
             {% endif %}
           </div> <!-- /content -->
+          <div class="form-group">
+            {{  form.topic.label }}
+            {% if form.topic.errors %}
+              {{ form.topic }}
+              <div class="invalid-feedback">
+                {% for error in form.topic.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{  form.topic }}
+            {% endif %}
+          </div> <!-- /topic -->
           <div class="form-group btn">
             {{  form.submit }}
           </div>

@@ -12,7 +12,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    posts = Post.query.order_by(Post.date_posted.desc()).limit(5).all()
+    return render_template('home.html', posts=posts)
 
 @app.route("/about")
 def about():
@@ -20,7 +21,8 @@ def about():
 
 @app.route("/topics")
 def topics():
-    return render_template('topics.html', topics=Topic.query.all(), title='Topics')
+    topics = Topic.query.all()
+    return render_template('topics.html', topics=topics, title='Topics')
 
 @app.route("/topic/<topic_name>")
 def topic(topic_name):
@@ -33,6 +35,10 @@ def new_post():
     """Create new post"""
     form = PostForm()
     if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user,
+                    topic_id=form.topic.data)
+        db.session.add(post)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form)
