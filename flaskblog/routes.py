@@ -47,7 +47,7 @@ def new_post():
 def post(post_title):
     post = Post.query.filter_by(title=post_title).first()
     topic = Topic.query.filter_by(id=post.topic_id).first()
-    return render_template('post.html', topic=topic, post=post)
+    return render_template('post.html', title=post.title, topic=topic, post=post)
 
 
 @app.route("/register", methods=['GET', 'POST'])
