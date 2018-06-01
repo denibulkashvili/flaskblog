@@ -70,9 +70,21 @@ def update_post(post_title):
         form.title.data = post.title
         form.content.data = post.content
 
+
     return render_template('create_post.html', title='Update Post',
                             form=form, legend='Update Post')
 
+@app.route("/post/<post_title>/delete", methods=['POST'])
+@login_required
+def delete_post(post_title):
+    """Delete posts"""
+    post = Post.query.filter_by(title=post_title).first()
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted.', 'success')
+    return redirect(url_for('home'))
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

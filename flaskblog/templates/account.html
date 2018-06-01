@@ -56,7 +56,17 @@
         </form>
       </section> <!-- /update-account form -->
 
-      
+      <section class="account-posts">
+        <h3>My Posts</h3>
+        <ul>
+          {% for post in current_user.posts %}
+          <li><a href="{{ url_for('post', post_title=post.title) }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+
+
+
+      </section>
     </article> <!-- /account -->
 
 {% endblock content %}
