@@ -239,4 +239,14 @@ article.form {
 
 
 
+/* Pagination links */
+.paginate{
+
+}
+.hp-recent > a.paginate-btn {
+
+}
+.hp-recent > a.paginate-btn.active{
+  text-decoration: none;
+}
 /*  */
